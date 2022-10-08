@@ -7,9 +7,11 @@ A repo of solved problems from platforms such as [LeetCode](https://leetcode.com
 
 My commit messages are organised as ``MESSAGE: #N #M`` where,
 
-      MESSAGE can be Solved or Improved
-      #N is number of attempts such that 2att means 2 attempts until the problem is solved
-      #M is the time it takes to solve the problem or the improved run-time, it could be 15min or 220ms
+**MESSAGE** can be *Solved* or *Improved*
+
+**#N** is number of attempts such that 2att means 2 attempts until the problem is solved
+
+**#M** is the time it takes to solve the problem or the improved run-time, it could be 15min or 220ms
 
 ## Platforms
 
