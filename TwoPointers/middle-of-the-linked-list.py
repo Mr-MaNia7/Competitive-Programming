@@ -8,15 +8,11 @@ class ListNode:
 
 class Solution:
     def middleNode(self, head: Optional[ListNode]) -> Optional[ListNode]:
-        curr = head
-        count = 0
-        while curr != None:
-            count += 1
-            curr = curr.next
-        c = head
-        for i in range(count//2):
-            c = c.next
-        return c
+        fast = slow = head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
 
 if __name__ == "__main__":
     s = Solution()
