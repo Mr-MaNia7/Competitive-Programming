@@ -2,16 +2,18 @@ from typing import List
 
 class Solution:
     def checkArithmeticSubarrays(self, nums: List[int], l: List[int], r: List[int]) -> List[bool]:
-        def checker(arr, s, e) -> bool:
-            arr.sort()
-            d = -1
-            for i in range(s, e):
-                if d == -1: d = arr[i-s+1] - arr[i-s]
-                if arr[i-s+1] - arr[i-s] != d:
+        def checker(arr) -> bool:
+            s = set(arr)
+            if len(s) != len(arr): return len(s) == 1
+            maxm, minm = max(arr), min(arr)
+            if (maxm - minm)%(len(arr)-1) != 0: return False
+            dce = (maxm - minm)//(len(arr)-1)
+            for i in range(minm, maxm, dce):
+                if i not in s:
                     return False
             return True
 
-        return [checker(nums[l[i]:r[i]+1], l[i], r[i]) for i in range(len(r))]
+        return [checker(nums[start:stop+1]) for start, stop in zip(l,r)]
 
 if __name__ == "__main__":
     s = Solution()
