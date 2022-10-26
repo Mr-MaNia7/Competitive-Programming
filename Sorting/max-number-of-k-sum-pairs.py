@@ -2,18 +2,16 @@ from typing import Counter, List
 
 class Solution:
     def maxOperations(self, nums: List[int], k: int) -> int:
-        nums.sort()
-        i, j, count = 0,len(nums) - 1, 0 
-        while i < j:
-            sum = nums[i] + nums[j]
-            if sum == k:
+        map = {}
+        count = 0
+        for num in nums:
+            res = k - num
+            if res in map:
                 count += 1
-                i += 1
-                j -= 1
-            elif sum > k:
-                j -= 1
+                if map.get(res) == 1: del map[res]
+                else: map.update({res : map.get(res) - 1})
             else:
-                i += 1
+                map[num] = map.get(num, 0) + 1
         return count
 
 if __name__ == "__main__":
