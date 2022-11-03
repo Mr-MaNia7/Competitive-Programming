@@ -6,15 +6,9 @@ class Solution:
         res = []
         for n in nums:
             map[n] = map.get(n, 0) + 1
-        for _ in range(k):
-            maxm = 0
-            idx = 0
-            for key, val in map.items():
-                if val > maxm:
-                    maxm = val
-                    idx = key
-            del map[idx]
-            res.append(idx)
+        tgt = sorted(map.values(), reverse=True)[k-1]
+        for key, val in map.items():
+            if val >= tgt: res.append(key)
         return res
 
 if __name__ == "__main__":
