@@ -3,15 +3,12 @@ class Solution:
         res = 0
         zeroes = 0
         n = len(nums)
-        l = r = 0
-        while r < n:
-            if zeroes < 2:
-                if nums[r] == 0:
-                    zeroes += 1
-                r += 1
-            else:
-                if l < n and nums[l] == 0:
-                    zeroes -= 1
+        l = 0
+        for r in range(n):
+            if nums[r] == 0: zeroes += 1
+            while zeroes > 1:
+                if nums[l] == 0: zeroes -= 1
                 l += 1
-            res = max(res, r - l - zeroes)
-        return res - 1 if res == n else res
+            res = max(res, r-l+1-zeroes)
+        return res-1 if res == n else res
+        
