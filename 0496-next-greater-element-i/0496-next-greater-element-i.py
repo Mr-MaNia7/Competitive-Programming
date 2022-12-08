@@ -1,16 +1,14 @@
 class Solution:
     def nextGreaterElement(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        ng = []
-        for i in nums1:
-            found = False
-            curr = float(inf)
-            for j in nums2:
-                if i == j: 
-                    found = True
-                    curr = j
-                if found and j > curr:
-                    ng.append(j)
-                    break
-            else:
-                ng.append(-1)
-        return ng
+        hash = {}
+        monStack = [nums2[0]]
+        for n in nums2:
+            while monStack and n > monStack[-1]:
+                hash[monStack.pop()] = n
+            monStack.append(n)
+        for n in monStack:
+            hash[n] = -1
+        res = []
+        for n in nums1:
+            res.append(hash[n])
+        return res
