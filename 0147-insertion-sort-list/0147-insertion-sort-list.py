@@ -6,9 +6,8 @@ class Solution:
             nxt = cur.next
             sorted = self.sortedInsert(sorted, cur)
             cur = nxt
-        head = sorted
-        return head
-            
+        return sorted
+
     def sortedInsert(self, head, new):
         if not head or head.val >= new.val:
             new.next = head
