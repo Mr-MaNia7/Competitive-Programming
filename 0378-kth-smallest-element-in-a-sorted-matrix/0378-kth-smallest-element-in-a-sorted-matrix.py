@@ -1,8 +1,11 @@
 class Solution:
     def kthSmallest(self, matrix: List[List[int]], k: int) -> int:
-        arr = []
+        heap = []
         for row in matrix:
             for col in row:
-                arr.append(col)
-        arr.sort()
-        return arr[k-1]
+                if len(heap) < k:
+                    heapq.heappush(heap, -col)
+                else:
+                    if -col > heap[0]:
+                        heapq.heapreplace(heap, -col)
+        return -1 * heap[0]
