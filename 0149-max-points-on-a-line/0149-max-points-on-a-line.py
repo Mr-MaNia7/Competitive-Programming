@@ -8,11 +8,9 @@ class Solution:
                 x2, y2 = points[j][0], points[j][1]
                 if x2-x1:
                     m = (y2-y1)/(x2-x1)
-                    b = y2 - m*x2
                 else:
                     m = float('inf')
-                    b = x1
-                key = (round(m, 10), round(b, 10))
+                key = round(m, 10)
                 if key in dic:
                     dic[key] += 1
                     maxm = max(dic[key], maxm)
