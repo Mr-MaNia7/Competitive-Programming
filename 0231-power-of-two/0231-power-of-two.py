@@ -1,6 +1,6 @@
 class Solution:
     def isPowerOfTwo(self, n: int) -> bool:
-        for i in range(32):
-            if n == 2**i:
-                return True
-        return False
+        if n == 0: return False
+        while n%2 == 0:
+            n /= 2
+        return n == 1
